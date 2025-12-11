@@ -1,0 +1,8 @@
+[build]
+# Add Chrome for Puppeteer
+apt = ["chromium-browser"]
+
+[variables]
+# Puppeteer config
+CHROME_BIN = "/usr/bin/chromium-browser"
+PUPPETEER_SKIP_CHROMIUM_DOWNLOAD = "true"
