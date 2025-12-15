@@ -328,38 +328,38 @@ bot.action('admin_inventory', async (ctx) => {
   await ctx.answerCbQuery();
 });
 
-bot.action(/^edit_product_(\d+)$/, async (ctx) => {
+bot.action(/^edit_product_(.+)$/, async (ctx) => {
   const productId = ctx.match[1];
   await startEditProduct(ctx, productId);
   await ctx.answerCbQuery();
 });
 
 // Admin order management
-bot.action(/^admin_order_(\d+)$/, async (ctx) => {
+bot.action(/^admin_order_(.+)$/, async (ctx) => {
   const orderId = ctx.match[1];
   await showOrderDetails(ctx, orderId);
   await ctx.answerCbQuery();
 });
 
-bot.action(/^order_status_(\d+)_(.+)$/, async (ctx) => {
+bot.action(/^order_status_(.+)_(.+)$/, async (ctx) => {
   const orderId = ctx.match[1];
   const status = ctx.match[2];
   await updateOrderStatus(ctx, orderId, status);
 });
 
 // Admin feedback management  
-bot.action(/^feedback_(\d+)$/, async (ctx) => {
+bot.action(/^feedback_(.+)$/, async (ctx) => {
   const feedbackId = ctx.match[1];
   await showFeedbackDetails(ctx, feedbackId);
   await ctx.answerCbQuery();
 });
 
-bot.action(/^mark_read_(\d+)$/, async (ctx) => {
+bot.action(/^mark_read_(.+)$/, async (ctx) => {
   const feedbackId = ctx.match[1];
   await markFeedbackAsRead(ctx, feedbackId);
 });
 
-bot.action(/^respond_feedback_(\d+)$/, async (ctx) => {
+bot.action(/^respond_feedback_(.+)$/, async (ctx) => {
   const feedbackId = ctx.match[1];
   await startFeedbackResponse(ctx, feedbackId);
 });
