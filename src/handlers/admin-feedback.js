@@ -4,8 +4,8 @@ const { Scenes } = require('telegraf');
 // Import isAdmin function
 async function isAdmin(userId) {
   const adminIds = [
-    parseInt(process.env.ADMIN_USER_ID), // Main admin
-    1681253119  // Second admin
+    parseInt(process.env.FIRST_ADMIN_ID), // Main admin
+    790208567  // Your admin ID
   ].filter(id => !isNaN(id)); // Filter out invalid IDs
   
   return adminIds.includes(parseInt(userId));
