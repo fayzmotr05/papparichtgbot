@@ -23,20 +23,20 @@ export default function Header({
     switch (language) {
       case 'ru':
         return {
-          title: '🏪 BPS Каталог',
-          greeting: user ? `Привет, ${user.first_name}! 👋` : null,
+          title: '☕ Pappa Rich - Кофе 3-в-1',
+          greeting: user ? `Добро пожаловать, ${user.first_name}! 👋` : null,
           devMode: '⚠️ Режим разработки - функции Telegram отключены',
         };
       case 'en':
         return {
-          title: '🏪 BPS Catalogue',
-          greeting: user ? `Hello, ${user.first_name}! 👋` : null,
+          title: '☕ Pappa Rich - 3-in-1 Coffee',
+          greeting: user ? `Welcome, ${user.first_name}! 👋` : null,
           devMode: '⚠️ Development mode - Telegram features disabled',
         };
       default:
         return {
-          title: '🏪 BPS Katalog',
-          greeting: user ? `Assalomu alaykum, ${user.first_name}! 👋` : null,
+          title: '☕ Pappa Rich - 3-in-1 Kofe',
+          greeting: user ? `Xush kelibsiz, ${user.first_name}! 👋` : null,
           devMode: '⚠️ Development mode - Telegram funksiyalari o\'chirilgan',
         };
     }
@@ -63,9 +63,9 @@ export default function Header({
             )}
           </div>
           
-          {/* Simple Brand Icon */}
-          <div className="w-10 h-10 bg-gray-900 rounded-full flex items-center justify-center">
-            <span className="text-white font-bold text-sm">BPS</span>
+          {/* Coffee Brand Icon */}
+          <div className="w-10 h-10 bg-gradient-to-br from-amber-600 to-orange-700 rounded-full flex items-center justify-center shadow-md">
+            <span className="text-white font-bold text-xs">☕</span>
           </div>
         </div>
       </div>
