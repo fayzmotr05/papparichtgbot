@@ -4,9 +4,9 @@
 const messages = {
   // Welcome and start messages
   welcome: {
-    uz: '☕ Assalomu aleykum!\n\nBizning kofe do\'konimizning rasmiy botiga xush kelibsiz!\n\nTilni tanlang:',
-    ru: '☕ Здравствуйте!\n\nДобро пожаловать в официальный бот нашей кофейни!\n\nВыберите язык:',
-    en: '☕ Hello!\n\nWelcome to the official bot of our coffee shop!\n\nChoose language:'
+    uz: '☕ Assalomu aleykum!\n\nPappa Rich Uzbekistan - kofe distribyutor kompaniyasining rasmiy botiga xush kelibsiz!\n\n3-in-1 kofe mahsulotlarimiz bilan tanishing.\n\nTilni tanlang:',
+    ru: '☕ Здравствуйте!\n\nДобро пожаловать в официальный бот компании Pappa Rich Uzbekistan - дистрибьютора кофе!\n\nОзнакомьтесь с нашими продуктами кофе 3-в-1.\n\nВыберите язык:',
+    en: '☕ Hello!\n\nWelcome to the official bot of Pappa Rich Uzbekistan - coffee distribution company!\n\nDiscover our 3-in-1 coffee products.\n\nChoose language:'
   },
 
   languageSet: {
@@ -16,38 +16,38 @@ const messages = {
   },
 
   miniAppWelcome: {
-    uz: '📱 Mini App\'dan xush kelibsiz!\n\nSiz tanlagan kofe uchun buyurtma berasiz.',
-    ru: '📱 Добро пожаловать из Mini App!\n\nВы заказываете выбранный кофе.',
-    en: '📱 Welcome from Mini App!\n\nYou are ordering the selected coffee.'
+    uz: '📱 Mini App\'dan xush kelibsiz!\n\nSiz tanlagan 3-in-1 kofe uchun buyurtma berasiz.',
+    ru: '📱 Добро пожаловать из Mini App!\n\nВы заказываете выбранный кофе 3-в-1.',
+    en: '📱 Welcome from Mini App!\n\nYou are ordering the selected 3-in-1 coffee.'
   },
 
   welcomeBack: {
-    uz: '🏠 Botga qaytganingiz uchun rahmat!\n\nQuyida kofe katalogi:',
-    ru: '🏠 Спасибо, что вернулись в бот!\n\nВот каталог кофе:',
-    en: '🏠 Thanks for returning to the bot!\n\nHere is the coffee catalog:'
+    uz: '🏠 Botga qaytganingiz uchun rahmat!\n\nQuyida 3-in-1 kofe katalogi:',
+    ru: '🏠 Спасибо, что вернулись в бот!\n\nВот каталог кофе 3-в-1:',
+    en: '🏠 Thanks for returning to the bot!\n\nHere is the 3-in-1 coffee catalog:'
   },
 
   // Main menu buttons
   mainMenu: {
     webApp: {
-      uz: 'Kofe Katalogi',
-      ru: 'Каталог Кофе',
-      en: 'Coffee Catalog'
+      uz: '3-in-1 Kofe Katalogi',
+      ru: 'Каталог Кофе 3-в-1',
+      en: '3-in-1 Coffee Catalog'
     },
     products: {
-      uz: '☕ Kofe turlari',
-      ru: '☕ Виды кофе',
-      en: '☕ Coffee Types'
+      uz: '☕ 3-in-1 Kofe',
+      ru: '☕ Кофе 3-в-1',
+      en: '☕ 3-in-1 Coffee'
     },
     order: {
-      uz: '📝 Buyurtma',
-      ru: '📝 Заказ',
-      en: '📝 Order'
+      uz: '📝 Buyurtma berish',
+      ru: '📝 Сделать заказ',
+      en: '📝 Place Order'
     },
     catalog: {
-      uz: '📱 Katalog',
-      ru: '📱 Каталог',
-      en: '📱 Catalog'
+      uz: '📱 Mahsulotlar',
+      ru: '📱 Продукция',
+      en: '📱 Products'
     },
     feedback: {
       uz: '💬 Fikr bildirish',
@@ -85,15 +85,15 @@ const messages = {
 
   // Products
   noProducts: {
-    uz: '☕ Hozircha kofe turlari mavjud emas.',
-    ru: '☕ Виды кофе пока недоступны.',
-    en: '☕ No coffee types available at the moment.'
+    uz: '☕ Hozircha 3-in-1 kofe mahsulotlari mavjud emas.',
+    ru: '☕ Продукция кофе 3-в-1 пока недоступна.',
+    en: '☕ No 3-in-1 coffee products available at the moment.'
   },
 
   productList: {
-    uz: '☕ KOFE TURLARI RO\'YXATI',
-    ru: '☕ СПИСОК ВИДОВ КОФЕ',
-    en: '☕ COFFEE TYPES LIST'
+    uz: '☕ 3-IN-1 KOFE MAHSULOTLARI',
+    ru: '☕ ПРОДУКЦИЯ КОФЕ 3-В-1',
+    en: '☕ 3-IN-1 COFFEE PRODUCTS'
   },
 
   // Orders
@@ -206,9 +206,9 @@ const messages = {
 
   // Main menu labels  
   mainMenuTitle: {
-    uz: '🏠 Asosiy menyu',
-    ru: '🏠 Главное меню',
-    en: '🏠 Main Menu'
+    uz: '🏠 Pappa Rich Uzbekistan\n\n3-in-1 kofe distribyutori',
+    ru: '🏠 Pappa Rich Uzbekistan\n\nДистрибьютор кофе 3-в-1',
+    en: '🏠 Pappa Rich Uzbekistan\n\n3-in-1 Coffee Distributor'
   },
 
   order: {

@@ -188,32 +188,32 @@ function App() {
     switch (language) {
       case 'ru':
         return {
-          title: '☕ Кофе Каталог',
-          greeting: user ? `Привет, ${user.first_name}! ☕` : null,
-          loading: 'Загрузка кофе...',
+          title: '☕ Pappa Rich - Кофе 3-в-1',
+          greeting: user ? `Добро пожаловать, ${user.first_name}! ☕` : null,
+          loading: 'Загрузка продукции...',
           error: 'Произошла ошибка',
           retry: 'Повторить',
-          noProducts: 'Кофе не найден',
+          noProducts: 'Продукция не найдена',
           refresh: 'Обновить'
         };
       case 'en':
         return {
-          title: '☕ Coffee Catalogue',
-          greeting: user ? `Hello, ${user.first_name}! ☕` : null,
-          loading: 'Loading coffee...',
+          title: '☕ Pappa Rich - 3-in-1 Coffee',
+          greeting: user ? `Welcome, ${user.first_name}! ☕` : null,
+          loading: 'Loading products...',
           error: 'An error occurred',
           retry: 'Retry',
-          noProducts: 'No coffee found',
+          noProducts: 'No products found',
           refresh: 'Refresh'
         };
       default:
         return {
-          title: '☕ Kofe Katalogi',
-          greeting: user ? `Assalomu alaykum, ${user.first_name}! ☕` : null,
-          loading: 'Kofe yuklanmoqda...',
+          title: '☕ Pappa Rich - 3-in-1 Kofe',
+          greeting: user ? `Xush kelibsiz, ${user.first_name}! ☕` : null,
+          loading: 'Mahsulotlar yuklanmoqda...',
           error: 'Xatolik yuz berdi',
           retry: 'Qayta urinish',
-          noProducts: 'Kofe topilmadi',
+          noProducts: 'Mahsulotlar topilmadi',
           refresh: 'Yangilash'
         };
     }
@@ -275,7 +275,7 @@ function App() {
           <div className="text-center py-12 px-4">
             <div className="text-6xl mb-4">📦</div>
             <p className="text-gray-600 dark:text-gray-400 mb-4 text-lg">
-              {searchQuery ? labels.noProducts : 'Hozircha mahsulotlar mavjud emas'}
+              {searchQuery ? labels.noProducts : 'Hozircha 3-in-1 kofe mahsulotlari mavjud emas'}
             </p>
             <button 
               onClick={searchQuery ? () => handleSearch('') : () => loadProducts()}
