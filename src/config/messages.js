@@ -29,6 +29,11 @@ const messages = {
 
   // Main menu buttons
   mainMenu: {
+    webApp: {
+      uz: 'Kofe Katalogi',
+      ru: 'Каталог Кофе',
+      en: 'Coffee Catalog'
+    },
     products: {
       uz: '☕ Kofe turlari',
       ru: '☕ Виды кофе',

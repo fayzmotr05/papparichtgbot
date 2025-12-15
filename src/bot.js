@@ -177,6 +177,14 @@ async function showMainMenu(ctx, userLanguage = null) {
 
     const keyboard = [
       [
+        { 
+          text: '🌐 ' + getMessage('mainMenu.webApp', language),
+          web_app: { 
+            url: process.env.MINI_APP_URL || 'https://mini-e4fcp04g9-harryschooladm-8637s-projects.vercel.app'
+          }
+        }
+      ],
+      [
         { text: getMessage('mainMenu.products', language) },
         { text: getMessage('order', language) }
       ],
