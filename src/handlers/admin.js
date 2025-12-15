@@ -101,8 +101,21 @@ async function showAdminProducts(ctx) {
 // Show admin orders
 async function showAdminOrders(ctx) {
   try {
+    console.log('🔍 Fetching orders for admin panel...');
     const orders = await db.getAllOrders();
-    const pendingOrders = orders.filter(o => o.status === 'pending');
+    console.log('📊 Orders fetched:', orders?.length || 0);
+    
+    if (!orders) {
+      console.error('❌ Orders is null/undefined');
+      throw new Error('Ma\'lumotlar bazasidan buyurtmalar yuklanmadi');
+    }
+    
+    if (!Array.isArray(orders)) {
+      console.error('❌ Orders is not an array:', typeof orders);
+      throw new Error('Buyurtmalar ma\'lumotlari noto\'g\'ri formatda');
+    }
+    
+    const pendingOrders = orders.filter(o => o && (o.status === 'pending' || o.status === 'new'));
     
     let message = `📋 BUYURTMALAR BOSHQARUVI\n\n`;
     message += `Jami buyurtmalar: ${orders.length} ta\n`;
@@ -115,29 +128,37 @@ async function showAdminOrders(ctx) {
       
       // Show last 5 pending orders
       pendingOrders.slice(0, 5).forEach((order, index) => {
-        const productName = order.products?.name_uz || 'Mahsulot nomi';
-        const customerName = order.contact_name || 'Unknown';
-        
-        // Format date and time
-        const orderDate = new Date(order.created_at);
-        const dateStr = orderDate.toLocaleDateString('uz-UZ');
-        const timeStr = orderDate.toLocaleTimeString('uz-UZ', { 
-          hour: '2-digit', 
-          minute: '2-digit' 
-        });
-        
-        message += `${index + 1}. #${order.id}\n`;
-        message += `📅 ${dateStr} ${timeStr}\n`;
-        message += `👤 ${customerName}\n`;
-        message += `📦 ${productName}\n`;
-        message += `🔢 ${order.quantity} dona\n`;
-        message += `💰 ${order.total_price.toLocaleString()} so'm\n`;
-        message += `📞 ${order.customer_phone}\n\n`;
+        try {
+          const productName = order.products?.name_uz || 'Mahsulot nomi';
+          const customerName = order.contact_name || order.customer_name || 'Unknown';
+          
+          // Format date and time safely
+          const orderDate = new Date(order.created_at);
+          const dateStr = orderDate.toLocaleDateString('uz-UZ');
+          const timeStr = orderDate.toLocaleTimeString('uz-UZ', { 
+            hour: '2-digit', 
+            minute: '2-digit' 
+          });
+          
+          // Short order ID for display
+          const shortId = order.id.slice(-8);
+          
+          message += `${index + 1}. #${shortId}\n`;
+          message += `📅 ${dateStr} ${timeStr}\n`;
+          message += `👤 ${customerName}\n`;
+          message += `📦 ${productName}\n`;
+          message += `🔢 ${order.quantity || 1} dona\n`;
+          message += `💰 ${(order.total_price || 0).toLocaleString()} so'm\n`;
+          message += `📞 ${order.customer_phone || 'N/A'}\n\n`;
 
-        buttons.push([{
-          text: `✅ #${order.id} - ${dateStr} ${timeStr}`,
-          callback_data: `admin_order_${order.id}`
-        }]);
+          buttons.push([{
+            text: `✅ #${shortId} - ${dateStr}`,
+            callback_data: `admin_order_${order.id}`
+          }]);
+        } catch (orderError) {
+          console.error('Error processing order:', order.id, orderError);
+          message += `${index + 1}. Buyurtma ma'lumotlarida xatolik\n\n`;
+        }
       });
     } else {
       message += `📋 Hozircha yangi buyurtmalar yo'q`;
@@ -155,8 +176,45 @@ async function showAdminOrders(ctx) {
     });
 
   } catch (error) {
-    console.error('Admin orders error:', error);
-    await ctx.reply('❌ Xatolik yuz berdi');
+    console.error('🔥 Admin orders detailed error:', {
+      message: error.message,
+      stack: error.stack,
+      userId: ctx.from.id,
+      timestamp: new Date().toISOString()
+    });
+    
+    const errorMessage = 
+      `❌ BUYURTMALAR YUKLANISHIDA XATOLIK\n\n` +
+      `🔍 Sabab: ${error.message}\n\n` +
+      `🛠️ Iltimos:\n` +
+      `1. Internet ulanishini tekshiring\n` +
+      `2. Bir necha daqiqadan so'ng qayta urinib ko'ring\n` +
+      `3. Muammo davom etsa, texnik yordam bilan bog'laning`;
+
+    try {
+      await ctx.editMessageText(errorMessage, {
+        reply_markup: {
+          inline_keyboard: [
+            [
+              { text: '🔄 Qayta urinish', callback_data: 'admin_orders' },
+              { text: '◀️ Admin Panel', callback_data: 'admin_panel' }
+            ]
+          ]
+        }
+      });
+    } catch (editError) {
+      console.error('Error editing message:', editError);
+      await ctx.reply(errorMessage, {
+        reply_markup: {
+          inline_keyboard: [
+            [
+              { text: '🔄 Qayta urinish', callback_data: 'admin_orders' },
+              { text: '◀️ Admin Panel', callback_data: 'admin_panel' }
+            ]
+          ]
+        }
+      });
+    }
   }
 }
 

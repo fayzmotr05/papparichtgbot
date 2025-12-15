@@ -189,6 +189,45 @@ const db = {
     }
   },
 
+  async forceDeleteProduct(productId) {
+    try {
+      // First get order count for logging
+      const { data: orders, error: ordersError } = await supabase
+        .from('orders')
+        .select('id')
+        .eq('product_id', productId);
+
+      if (ordersError) throw ordersError;
+
+      console.log(`⚠️ Force deleting product ${productId} with ${orders?.length || 0} associated orders`);
+
+      // Delete the product regardless of orders (CASCADE should handle related data)
+      const { data, error } = await supabase
+        .from('products')
+        .delete()
+        .eq('id', productId)
+        .select();
+
+      if (error) throw error;
+
+      console.log(`✅ Force deleted product ${productId} successfully`);
+      return {
+        success: true,
+        deletedProduct: data && data.length > 0 ? data[0] : null,
+        affectedOrders: orders?.length || 0
+      };
+    } catch (error) {
+      console.error('🔥 Database error - forceDeleteProduct:', {
+        message: error.message,
+        details: error.details,
+        hint: error.hint,
+        code: error.code,
+        productId: productId
+      });
+      throw error;
+    }
+  },
+
   // Order operations
   async createOrder(orderData) {
     try {
@@ -228,6 +267,7 @@ const db = {
 
   async getAllOrders() {
     try {
+      console.log('🔍 Fetching all orders from database...');
       const { data, error } = await supabase
         .from('orders')
         .select(`
@@ -237,10 +277,22 @@ const db = {
         `)
         .order('created_at', { ascending: false });
 
-      if (error) throw error;
+      if (error) {
+        console.error('❌ Supabase error in getAllOrders:', error);
+        throw error;
+      }
+      
+      console.log('✅ Orders fetched successfully:', data?.length || 0);
       return data || [];
     } catch (error) {
-      console.error('Database error - getAllOrders:', error.message);
+      console.error('🔥 Database error - getAllOrders:', {
+        message: error.message,
+        details: error.details,
+        hint: error.hint,
+        code: error.code
+      });
+      
+      // Return empty array for graceful handling
       return [];
     }
   },
@@ -311,6 +363,10 @@ const db = {
       return data || [];
     } catch (error) {
       console.error('Database error - getLowStockProducts:', error.message);
+      // Don't log fetch errors repeatedly 
+      if (!error.message.includes('fetch failed')) {
+        console.error('Detailed error:', error);
+      }
       return [];
     }
   },
@@ -327,6 +383,10 @@ const db = {
       return data || [];
     } catch (error) {
       console.error('Database error - getOutOfStockProducts:', error.message);
+      // Don't log fetch errors repeatedly
+      if (!error.message.includes('fetch failed')) {
+        console.error('Detailed error:', error);
+      }
       return [];
     }
   },

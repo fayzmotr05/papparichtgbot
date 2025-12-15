@@ -575,18 +575,79 @@ editProductScene.action('confirm_delete', async (ctx) => {
     });
     
     if (error.code === 'FOREIGN_KEY_CONSTRAINT') {
+      const buttons = [
+        [
+          { text: '⚠️ Majburiy o\'chirish', callback_data: 'force_delete_product' },
+          { text: '🔴 Faolsizlashtirish', callback_data: 'deactivate_product' }
+        ],
+        [
+          { text: '↩️ Orqaga', callback_data: 'edit_product_menu' }
+        ]
+      ];
+
       await ctx.editMessageText(
         `❌ MAHSULOTNI O'CHIRIB BO'LMAYDI\n\n` +
         `Bu mahsulot uchun ${error.orderCount} ta buyurtma mavjud.\n\n` +
-        `🔧 Hal qilish yo'llari:\n` +
-        `1️⃣ Buyurtmalarni tugatish\n` +
-        `2️⃣ Mahsulotni faolsizlashtirish\n` +
-        `3️⃣ Mahsulot nomini o'zgartirish\n\n` +
-        `💡 Maslahat: Mahsulotni o'chirish o'rniga "faol emas" deb belgilash yaxshiroq.`
+        `🔧 Variantlar:\n` +
+        `⚠️ Majburiy o'chirish - Mahsulot va bog'liq buyurtmalarni o'chiradi\n` +
+        `🔴 Faolsizlashtirish - Mahsulotni yashiradi, buyurtmalar saqlanadi\n\n` +
+        `💡 Maslahat: Faolsizlashtirish xavfsizroq variant.`,
+        {
+          reply_markup: {
+            inline_keyboard: buttons
+          }
+        }
       );
     } else {
       await ctx.editMessageText('❌ Ma\'lumotlar bazasida xatolik: ' + error.message);
     }
+  } finally {
+    ctx.scene.leave();
+  }
+  
+  await ctx.answerCbQuery();
+});
+
+// Force delete product (with orders)
+editProductScene.action('force_delete_product', async (ctx) => {
+  try {
+    const product = ctx.scene.state.product;
+    if (!product) {
+      await ctx.editMessageText('❌ Mahsulot ma\'lumoti topilmadi');
+      return;
+    }
+
+    // Use force delete function
+    const result = await db.forceDeleteProduct(product.id);
+    
+    if (result.success) {
+      await ctx.editMessageText(
+        `✅ MAHSULOT MAJBURIY O'CHIRILDI\n\n` +
+        `"${product.name_uz}" mahsuloti o'chirildi.\n` +
+        `📊 Ta'sir qilingan buyurtmalar: ${result.affectedOrders}\n\n` +
+        `⚠️ Bu amal qaytarib bo'lmaydi.`
+      );
+      
+      // Show admin products after delay
+      setTimeout(async () => {
+        const buttons = [[{
+          text: '📦 Mahsulotlar boshqaruvi',
+          callback_data: 'admin_products'
+        }]];
+        
+        await ctx.reply('Admin paneliga qaytish uchun tugmani bosing:', {
+          reply_markup: {
+            inline_keyboard: buttons
+          }
+        });
+      }, 2000);
+    } else {
+      await ctx.editMessageText('❌ Majburiy o\'chirishda xatolik');
+    }
+    
+  } catch (error) {
+    console.error('Force delete error:', error);
+    await ctx.editMessageText('❌ Majburiy o\'chirishda xatolik: ' + error.message);
   } finally {
     ctx.scene.leave();
   }
