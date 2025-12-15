@@ -118,73 +118,64 @@ const messages = {
 
   // Contact info
   contactInfo: {
-    uz: `☕ KOFE DO'KONI\n\n` +
-         `📱 Telefon: +998XX XXX XX XX\n` +
-         `📱 Telefon 2: +998XX XXX XX XX\n` +
-         `📍 Manzil: Toshkent shahri\n` +
-         `🕐 Ish vaqti: Har kuni 08:00 - 22:00\n` +
-         `📧 Email: info@coffeeshop.uz\n` +
-         `☕ Eng mazali kofe bizda!`,
-    ru: `☕ КОФЕЙНЯ\n\n` +
-         `📱 Телефон: +998XX XXX XX XX\n` +
-         `📱 Телефон 2: +998XX XXX XX XX\n` +
-         `📍 Адрес: г. Ташкент\n` +
-         `🕐 Рабочее время: Ежедневно 08:00 - 22:00\n` +
-         `📧 Email: info@coffeeshop.uz\n` +
-         `☕ Самый вкусный кофе у нас!`,
-    en: `☕ COFFEE SHOP\n\n` +
-         `📱 Phone: +998XX XXX XX XX\n` +
-         `📱 Phone 2: +998XX XXX XX XX\n` +
-         `📍 Address: Tashkent\n` +
-         `🕐 Working hours: Daily 08:00 - 22:00\n` +
-         `📧 Email: info@coffeeshop.uz\n` +
-         `☕ The most delicious coffee is here!`
+    uz: `☕ PAPPA RICH UZBEKISTAN\n\n` +
+         `📱 Telefon: +998 95 109 60 06\n` +
+         `📱 Telefon 2: +998 95 705 60 06\n` +
+         `🕐 Ish vaqti: Yakshanba-Juma 09:00 - 18:00\n` +
+         `📧 Email: papparichuz@gmail.com\n\n` +
+         `☕ Buyurtma va ma'lumot uchun bog'laning!`,
+    ru: `☕ PAPPA RICH UZBEKISTAN\n\n` +
+         `📱 Телефон: +998 95 109 60 06\n` +
+         `📱 Телефон 2: +998 95 705 60 06\n` +
+         `🕐 Рабочее время: Пн-Пт 09:00 - 18:00\n` +
+         `📧 Email: papparichuz@gmail.com\n\n` +
+         `☕ Свяжитесь для заказов и информации!`,
+    en: `☕ PAPPA RICH UZBEKISTAN\n\n` +
+         `📱 Phone: +998 95 109 60 06\n` +
+         `📱 Phone 2: +998 95 705 60 06\n` +
+         `🕐 Working hours: Mon-Fri 09:00 - 18:00\n` +
+         `📧 Email: papparichuz@gmail.com\n\n` +
+         `☕ Contact us for orders and information!`
   },
 
   // Company info
   companyInfo: {
-    uz: `☕ KOFE DO'KONI HAQIDA\n\n` +
-         `📋 Biz yuqori sifatli kofe sotuvchisimiz:\n\n` +
-         `☕ Turli xil kofe turlari\n` +
-         `🫘 Arabika va Robusta\n` +
-         `🌟 Maxsus aralashmalar\n` +
-         `⚡ Eriydigan kofe\n` +
-         `🥄 Kofe aksessuarlari\n\n` +
-         `⭐ Bizning afzalliklarimiz:\n` +
-         `✅ 100% sifatli kofe donalari\n` +
+    uz: `☕ PAPPA RICH UZBEKISTAN HAQIDA\n\n` +
+         `📋 Biz Pappa Rich mahsulotlarining rasmiy distribyutorimiz\n\n` +
+         `⭐ Bizning xizmatlarimiz:\n` +
+         `✅ Sifatli mahsulotlar\n` +
          `✅ Tez yetkazib berish\n` +
          `✅ Hamyonbop narxlar\n` +
-         `✅ Katta hajmdagi buyurtmalar\n` +
+         `✅ Katta va kichik buyurtmalar\n` +
          `✅ Professional xizmat\n\n` +
-         `☕ Mazali kofe buyurtma uchun bog'laning!`,
-    ru: `☕ О НАШЕЙ КОФЕЙНЕ\n\n` +
-         `📋 Мы продавцы высококачественного кофе:\n\n` +
-         `☕ Различные виды кофе\n` +
-         `🫘 Арабика и робуста\n` +
-         `🌟 Специальные смеси\n` +
-         `⚡ Растворимый кофе\n` +
-         `🥄 Кофейные аксессуары\n\n` +
-         `⭐ Наши преимущества:\n` +
-         `✅ 100% качественные кофейные зерна\n` +
+         `📞 Buyurtma va ma'lumot uchun bog'laning:\n` +
+         `📱 +998 95 109 60 06\n` +
+         `📱 +998 95 705 60 06\n` +
+         `📧 papparichuz@gmail.com`,
+    ru: `☕ О PAPPA RICH UZBEKISTAN\n\n` +
+         `📋 Мы официальный дистрибьютор продукции Pappa Rich\n\n` +
+         `⭐ Наши услуги:\n` +
+         `✅ Качественная продукция\n` +
          `✅ Быстрая доставка\n` +
          `✅ Доступные цены\n` +
-         `✅ Крупные объемы заказов\n` +
+         `✅ Крупные и мелкие заказы\n` +
          `✅ Профессиональное обслуживание\n\n` +
-         `☕ Свяжитесь для заказа вкусного кофе!`,
-    en: `☕ ABOUT OUR COFFEE SHOP\n\n` +
-         `📋 We are sellers of high-quality coffee:\n\n` +
-         `☕ Various types of coffee\n` +
-         `🫘 Arabica and Robusta\n` +
-         `🌟 Special blends\n` +
-         `⚡ Instant coffee\n` +
-         `🥄 Coffee accessories\n\n` +
-         `⭐ Our advantages:\n` +
-         `✅ 100% quality coffee beans\n` +
+         `📞 Для заказов и информации:\n` +
+         `📱 +998 95 109 60 06\n` +
+         `📱 +998 95 705 60 06\n` +
+         `📧 papparichuz@gmail.com`,
+    en: `☕ ABOUT PAPPA RICH UZBEKISTAN\n\n` +
+         `📋 We are official distributor of Pappa Rich products\n\n` +
+         `⭐ Our services:\n` +
+         `✅ Quality products\n` +
          `✅ Fast delivery\n` +
          `✅ Affordable prices\n` +
-         `✅ Large volume orders\n` +
+         `✅ Large and small orders\n` +
          `✅ Professional service\n\n` +
-         `☕ Contact us to order delicious coffee!`
+         `📞 For orders and information:\n` +
+         `📱 +998 95 109 60 06\n` +
+         `📱 +998 95 705 60 06\n` +
+         `📧 papparichuz@gmail.com`
   },
 
 
