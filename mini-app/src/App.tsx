@@ -188,9 +188,9 @@ function App() {
     switch (language) {
       case 'ru':
         return {
-          title: '☕ Pappa Rich - Кофе 3-в-1',
+          title: '☕ Pappa Rich',
           greeting: user ? `Добро пожаловать, ${user.first_name}! ☕` : null,
-          loading: 'Загрузка продукции...',
+          loading: 'Загрузка...',
           error: 'Произошла ошибка',
           retry: 'Повторить',
           noProducts: 'Продукция не найдена',
@@ -198,9 +198,9 @@ function App() {
         };
       case 'en':
         return {
-          title: '☕ Pappa Rich - 3-in-1 Coffee',
+          title: '☕ Pappa Rich',
           greeting: user ? `Welcome, ${user.first_name}! ☕` : null,
-          loading: 'Loading products...',
+          loading: 'Loading...',
           error: 'An error occurred',
           retry: 'Retry',
           noProducts: 'No products found',
@@ -208,9 +208,9 @@ function App() {
         };
       default:
         return {
-          title: '☕ Pappa Rich - 3-in-1 Kofe',
+          title: '☕ Pappa Rich',
           greeting: user ? `Xush kelibsiz, ${user.first_name}! ☕` : null,
-          loading: 'Mahsulotlar yuklanmoqda...',
+          loading: 'Yuklanmoqda...',
           error: 'Xatolik yuz berdi',
           retry: 'Qayta urinish',
           noProducts: 'Mahsulotlar topilmadi',
@@ -275,7 +275,7 @@ function App() {
           <div className="text-center py-12 px-4">
             <div className="text-6xl mb-4">📦</div>
             <p className="text-gray-600 dark:text-gray-400 mb-4 text-lg">
-              {searchQuery ? labels.noProducts : 'Hozircha 3-in-1 kofe mahsulotlari mavjud emas'}
+              {searchQuery ? labels.noProducts : 'Hozircha mahsulotlar mavjud emas'}
             </p>
             <button 
               onClick={searchQuery ? () => handleSearch('') : () => loadProducts()}

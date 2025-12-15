@@ -23,19 +23,19 @@ export default function Header({
     switch (language) {
       case 'ru':
         return {
-          title: '☕ Pappa Rich - Кофе 3-в-1',
+          title: '☕ Pappa Rich',
           greeting: user ? `Добро пожаловать, ${user.first_name}! 👋` : null,
           devMode: '⚠️ Режим разработки - функции Telegram отключены',
         };
       case 'en':
         return {
-          title: '☕ Pappa Rich - 3-in-1 Coffee',
+          title: '☕ Pappa Rich',
           greeting: user ? `Welcome, ${user.first_name}! 👋` : null,
           devMode: '⚠️ Development mode - Telegram features disabled',
         };
       default:
         return {
-          title: '☕ Pappa Rich - 3-in-1 Kofe',
+          title: '☕ Pappa Rich',
           greeting: user ? `Xush kelibsiz, ${user.first_name}! 👋` : null,
           devMode: '⚠️ Development mode - Telegram funksiyalari o\'chirilgan',
         };
